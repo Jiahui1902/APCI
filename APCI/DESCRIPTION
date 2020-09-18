@@ -1,0 +1,19 @@
+Package: APCI
+Type: Package
+Title: A new age-period-cohort model for describing and investigating inter-cohort differences and intra-cohort dynamics
+Version: 0.0.0
+Author: Liying Luo, Jiahui Xu
+Maintainer: Jiahui Xu <jpx5053@psu.edu>
+Depends: R (>= 3.6.0)
+Description: APC-I Model
+    This package is based on the paper of Luo and Hodges 2019
+Imports: 
+    haven,
+    survey,
+    magrittr,
+    tidyverse,
+    dplyr,
+    ggplot2
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
