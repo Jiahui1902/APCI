@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "colorRampPalette")importFrom("graphics", "axis", "image", "layout", "lines", "par",               "polygon", "text")importFrom("stats", "as.formula", "contr.poly", "df.residual",               "na.omit", "pt", "vcov")
+importFrom("utils", "tail")
+importFrom(magrittr,"%>%")
+importFrom("ggplot2","aes","theme")
