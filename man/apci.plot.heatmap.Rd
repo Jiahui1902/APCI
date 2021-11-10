@@ -2,10 +2,10 @@
 \alias{apci.plot.heatmap}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-plot the heatmap for APC-I model
+Visualize APC-I model results
 }
 \description{
-plot the heatmap to show cohort effects
+Visualize cohort effects from the APC-I model results using a heatmap
 }
 \usage{
 apci.plot.heatmap(model, age, period, color_map = NULL,
