@@ -2,11 +2,11 @@
 \alias{ageperiod_group}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Get the cohort index matrix for any age and period groups
+Construct a cohort index matrix for any number of age and period groups
 }
 \description{
-This function returns the cohort index matrix for any age and period groups. The cohort index matrix will then be used to extract the
-cohort effects.
+This function returns a cohort index matrix for any number of age and period groups. 
+  The cohort index matrix will then be used to extract age-period interaction effects contained in each cohort.
 }
 \usage{
 ageperiod_group(age_range, period_range,
