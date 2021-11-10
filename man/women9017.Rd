@@ -11,7 +11,7 @@ A sample dataset
 women9017
 }
 \format{
-  A data frame with 1000 observations on the following 23 variables.
+  A data frame with 1,000 observations and 23 variables.
   \describe{
     \item{\code{ac}}{a numeric vector}
     \item{\code{acc}}{a numeric vector}
