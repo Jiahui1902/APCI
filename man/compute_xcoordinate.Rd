@@ -2,10 +2,10 @@
 \alias{compute_xcoordinate}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-calculate x coordinate value
+calculate x coordinate values
 }
 \description{
-Calculate x coordinate value for the hexagram. This is an intermediate function.
+Calculate x coordinate values for the hexagram. This is an intermediate function.
 }
 \usage{
 compute_xcoordinate(p)
