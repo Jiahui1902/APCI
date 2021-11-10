@@ -2,10 +2,10 @@
 \alias{maineffect}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-estimate age effect and period effect
+estimate age main effects and period main effects
 }
 \description{
-estimate age and period effect from APCI model
+estimate age and period main effects from the APCI model
 }
 \usage{
 maineffect(A, P, C, model = temp6, data, gee=FALSE,
