@@ -2,10 +2,10 @@
 \alias{apci.plot.hexagram}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-data exploration: visualize age, period, and cohort patterns using a hexagram heatmap
+Visualize APC-I model results
 }
 \description{
-visualize age, period, and cohort patterns in a hexagram
+Visualize cohort effects from the APC-I model results using a hexagram
 }
 \usage{
 apci.plot.hexagram(model, age, period, first_age,
