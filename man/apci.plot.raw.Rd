@@ -2,10 +2,10 @@
 \alias{apci.plot.raw}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-plot the raw scores
+data exploration: visualize age, period, and cohort patterns in the outcome before modelling. 
 }
 \description{
-plot the raw scores in each age and period square
+plot the outcome in each age by period square
 }
 \usage{
 apci.plot.raw(data, outcome_var, age, period, ...)
