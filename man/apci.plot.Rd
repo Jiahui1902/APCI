@@ -2,10 +2,10 @@
 \alias{apci.plot}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-plot
+Visualization for data exploration or model results
 }
 \description{
-plotting raw scores or APC-I model results
+Visualize the outcome or APC-I model results in a simple plot
 }
 \usage{
 apci.plot(model, age, period, outcome_var,
