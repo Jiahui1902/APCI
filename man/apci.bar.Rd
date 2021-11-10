@@ -2,10 +2,10 @@
 \alias{apci.bar}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-make bar plot
+Visualization for the APC-I model results
 }
 \description{
-make barplot for cohort effect
+Visualize the APC-I model results in a simple bar plot.
 }
 \usage{
 apci.bar(model, age, period, outcome_var,
