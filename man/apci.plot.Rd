@@ -5,7 +5,7 @@
 Visualization for data exploration or model results
 }
 \description{
-Visualize the outcome or APC-I model results in a simple plot
+Visualize the outcome or APC-I model results in a simple plot.
 }
 \usage{
 apci.plot(model, age, period, outcome_var,
