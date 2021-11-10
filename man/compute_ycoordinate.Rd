@@ -2,10 +2,10 @@
 \alias{compute_ycoordinate}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-calculate y coordinate value
+calculate y coordinate values
 }
 \description{
-Calculate y coordinate value for the hexagram. This is an intermediate function.
+Calculate y coordinate values for the hexagram. This is an intermediate function.
 }
 \usage{
 compute_ycoordinate(p, a)
