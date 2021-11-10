@@ -5,7 +5,7 @@
 Estimate APC-I model
 }
 \description{
-Estimate the APCI original model. This is a generalized linear regression model.
+Step 1 of the APCI model: estimate a generalized linear model.
 }
 \usage{
 temp_model(data,
