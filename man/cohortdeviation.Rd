@@ -2,10 +2,10 @@
 \alias{cohortdeviation}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-calculate cohort deviation
+compute inter-cohort avarage deviations and intra-cohort life-course dynamics
 }
 \description{
-calculate cohort deviation
+Compute inter- and intra-cohort deviations.
 }
 \usage{
 cohortdeviation(A,
@@ -27,10 +27,10 @@ cohortdeviation(A,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{A, P, C}{
-The numbers of age groups, period groups, and cohort groups separately.
+The numbers of age groups, period groups, and cohort groups are defined separately.
 }
   \item{model}{
-A generalized linear regression model generated from the internal function temp_model
+A generalized linear model generated from the internal function temp_model
 }
   \item{weight}{
 An optional vector of sample weights to be used in the model fitting process. If non-NULL, the weights will be used in the first step to estimate the model. Observations with negative weights will be automatically dropped in modeling.
