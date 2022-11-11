@@ -32,7 +32,7 @@ apci.plot.hexagram <- function(model, #matrix: age as rows, period as columns fi
   data$value <- data$iaesti%>%as.character%>%as.numeric
   data <- data.table::dcast(data.table::as.data.table(data),
                             age~period,value.var = "value")%>%
-    dplyr::as_tibble%>%.[,-1]%>%as.matrix
+    as.data.frame%>%.[,-1]%>%as.matrix
   nnrow <- nrow(data)
   nncol <- ncol(data)
 

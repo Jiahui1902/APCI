@@ -1,17 +1,15 @@
 Package: APCI
 Type: Package
-Title: The R Package for Implementing the Age-Period-Cohort-Interaction Model for Estimating and Testing Inter-Cohort Differences and Intra-Cohort Life-Course Dynamics
-Version: 1.0.1
+Title: A New Age-Period-Cohort Model for Describing and Investigating Inter-Cohort Differences and Life Course Dynamics
+Version: 1.0.6
 Authors@R: c(person("Jiahui", "Xu",email = "jpx5053@psu.edu", role = c("aut", "cre")),
               person("Liying",  "Luo", email = "liyingluo@psu.edu", role = "aut") )
 Maintainer: Jiahui Xu <jpx5053@psu.edu>
 Depends: R (>= 3.6.0)
-Description: It implemented the Age-Period-Cohort-Interaction Model (APC-I Model) proposed by Liying Luo and James S. Hodges (2020).
+Description: It implemented Age-Period-Interaction Model (APC-I Model) proposed in the paper of Liying Luo and James S. Hodges in 2019. A new age-period-cohort model for describing and investigating inter-cohort differences and life course dynamics.
 Imports: 
-    haven,
     survey,
     magrittr,
-    tidyverse,
     dplyr,
     ggplot2,
     data.table,

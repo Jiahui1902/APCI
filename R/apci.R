@@ -23,7 +23,7 @@ apci <- function(outcome = "inlfc",
                  period_group = NULL,
                  ...){
   # change family name if the input is "binomial"
-  if(family=="binomial"){
+  if(family=="binomial"&gee==FALSE){
     family <- "quasibinomial"
   }
   data <- as.data.frame(data)

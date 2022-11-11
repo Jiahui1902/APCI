@@ -32,13 +32,13 @@ temp_model <- function(data,
   ###############
   #no missing data
   ###############
-  data <- as.data.frame(data)
+  data2 <- as.data.frame(data)
 
-  if(family=="binomial"){
+  if(family=="binomial"&gee==FALSE){
     family <- "quasibinomial"
   }
 
-  data2 = na.omit( data[ , unique(c(outcome,age,period,cohort,weight,covariate,id)[!is.null(c(outcome,age,period,cohort,weight,covariate,id))]) ] )
+  # data2 = na.omit( data[ , unique(c(outcome,age,period,cohort,weight,covariate,id)[!is.null(c(outcome,age,period,cohort,weight,covariate,id))]) ] )
 
   if(is.null(weight)){
     weight <- 1
@@ -96,12 +96,19 @@ temp_model <- function(data,
                      data = data2,
                      family = get(family),
                      corstr = corstr)
+    temp6$model <- data2
 
   }else{
   temp6 = survey::svyglm(temp6_formula,
                          wtdata2,
                          family = get(family))
+  if(temp6$df.residual == 0){
+    temp6 = glm(temp6_formula,
+                 data2,
+                 family = get(family))
   }
+  }
+
   # temp6
   # output
   list(A=A,P=P,C=C,model=temp6)

@@ -15,8 +15,6 @@ APC_I <- APCI::apci(outcome = "inlfc",
                     data = test_data,dev.test=FALSE,
                     print = T,
                     family = "gaussian")
-
-# check results
 summary(APC_I)
 
 APC_I$model
@@ -31,6 +29,20 @@ APC_I$cohort_slope
 APC_I$cohort_index
 
 apci.bar(model = APC_I, age = "acc",period = "pcc")
+
+# other type of generalized linear model
+APC_I2 <- APCI::apci(outcome = "inlfc",
+                    age = "acc",
+                    period = "pcc",
+                    cohort = "ccc",
+                    weight = "wt",
+                    covariate = "offset(log(educ))",
+                    data = test_data,dev.test=FALSE,
+                    print = T,
+                    family = "poisson")
+
+summary(APC_I2)
+
 
 # unequal age and period interval
 uneqal_interval1 <- APCI::apci(outcome = "inlfc",
@@ -87,4 +99,22 @@ uneqal_interval3$cohort_index
 uneqal_interval2$cohort_average$cohort_average
 uneqal_interval3$cohort_average$cohort_average
 
+# simulated panel data for GEE
+simulation_gee <- simulation
+simulation_gee$id <- 1:nrow(simulation_gee)
+simulation_gee = simulation_gee[sample(nrow(simulation_gee),30000,replace=T),]
+model_gee <- apci(outcome = "y",
+                  age = "age",
+                  period = "period",
+                  cohort = NULL,
+                  weight = NULL,
+                  covariate = NULL,
+                  data=simulation_gee,
+                  family ="gaussian",
+                  dev.test = FALSE,
+                  print = TRUE,
+                  gee = TRUE,
+                  id = "id",
+                  corstr = "exchangeable")
+summary(model_gee)
 

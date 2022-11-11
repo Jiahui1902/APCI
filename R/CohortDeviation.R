@@ -66,7 +66,12 @@ cohortdeviation <- function(A,P,C,
 
   iaesti = as.vector(T%*%r6[row_ind_r6])
   iase   = sqrt(diag(iavcov))
-  iap    = pt(-abs(iaesti/iase), df)*2
+
+  if(df ==0 ){
+    iap = 2 * pnorm(-abs(iaesti/iase))
+  }else{
+    iap    = pt(-abs(iaesti/iase), df)*2
+  }
 
   # cindex comes from function ageperiod_group
   # cindex <- sapply(1:P,function(j){
@@ -106,9 +111,17 @@ cohortint <- sapply(1:max(cindex),function(k){
   t = contresti/contrse
 
   if (t > 0){
-    p = 2*pt(t, df, lower.tail=F)
+    if(df ==0 ){
+      p = 2 * pnorm(-abs(t))
+    }else{
+      p    = 2*pt(t, df, lower.tail=F)
+    }
   } else {
-    p = 2*pt(t, df, lower.tail=T)
+    if(df ==0 ){
+      p = 2 * pnorm(-abs(t))
+    }else{
+      p    = 2*pt(t, df, lower.tail=T)
+    }
   }
 
   sig <- '   '
@@ -151,10 +164,19 @@ cohortint <- sapply(1:max(cindex),function(k){
     contresti = k2%*%iaesti
     contrse = sqrt(t(k2)%*%iavcov%*%k2)
     t = contresti/contrse
+
     if (t > 0){
-      p = 2*pt(t, df, lower.tail=F)
+      if(df ==0 ){
+        p = 2 * pnorm(-abs(t))
+      }else{
+        p    = 2*pt(t, df, lower.tail=F)
+      }
     } else {
-      p = 2*pt(t, df, lower.tail=T)
+      if(df ==0 ){
+        p = 2 * pnorm(-abs(t))
+      }else{
+        p    = 2*pt(t, df, lower.tail=T)
+      }
     }
 
     sig <- '   '

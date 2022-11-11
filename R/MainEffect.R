@@ -47,8 +47,12 @@ if(gee==TRUE){
   # df = nrow(model$data)-length(model$coefficients)
   df = model$df.residual
 }
-# fullap = pt(-abs(fullat),df.residual(model))*2
-fullap = pt(-abs(fullat),df)*2
+
+if(df ==0 ){
+  fullap = 2 * pnorm(-abs(fullat))
+}else{
+  fullap    = pt(-abs(fullat),df)*2
+}
 
 sig = rep('   ', A)
 sig[fullap<.05] = '*  '
@@ -83,8 +87,12 @@ if(gee==TRUE){
 }
 
 fullpt = fullpe/fullps
-# fullpp = pt(-abs(fullpt),df.residual(model))*2
-fullpp = pt(-abs(fullpt),df)*2
+
+if(df ==0 ){
+  fullpp = 2 * pnorm(-abs(fullpt))
+}else{
+  fullpp    = pt(-abs(fullpt),df)*2
+}
 
 sig = rep('   ', P)
 sig[fullpp<.05] = '*  '
@@ -95,7 +103,16 @@ fullp=cbind(fullpe, fullps, fullpp, fullpsig)
 
 inte = as.vector(r6[1])
 intse = r6se[1]
+# if GEE, generate p-values with manual test, modification: 2022-11-10
+if(gee==TRUE){
+  if(df ==0 ){
+    intp = 2 * pnorm(-abs(inte/intse))
+  }else{
+    intp    = pt(-abs(inte/intse),df)*2
+  }
+}else{
 intp = r6p[1]
+}
 intsig = rep('   ', 1)
 intsig[r6p[1]<.05] = '*  '
 intsig[r6p[1]<.01] = '** '

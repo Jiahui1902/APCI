@@ -14,6 +14,8 @@ utils::globalVariables(c("group_id",
                          "cohort",
                          "crange",
                          "ccc",
+                         "pnorm",
+                         "glm",
                          "."))
 # . age_estimate age_group as_tibble cohort_average cohort_group
 # coord_flip element_blank geom_abline geom_line geom_path geom_point
