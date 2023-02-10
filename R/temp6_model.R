@@ -92,7 +92,8 @@ temp_model <- function(data,
 
   if(gee==TRUE){
     temp6 = gee::gee(temp6_formula,
-                     id = id,#id = get(id),
+                     #id = id,
+                     id = get(id),
                      data = data2,
                      family = get(family),
                      corstr = corstr)
