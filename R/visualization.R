@@ -2,23 +2,23 @@
 # hexagram ####
 #matrix: age as rows, period as columns first_age = 0,
 apci.plot.hexagram <- function(model, #matrix: age as rows, period as columns first_age,
-                           age,
-                           period,
-                           first_age,
-                           first_period,
-                           interval,
-                           first_age_isoline = NULL,
-                           first_period_isoline = NULL,
-                           isoline_interval = NULL,
-                           color_scale = NULL,
-                           color_map = NULL,
-                           line_width = .5,
-                           line_color = "grey",
-                           label_size = .5,
-                           label_color = "black",
-                           scale_units = "Quintile",
-                           wrap_cohort_labels = TRUE,
-                           quantile = NULL){
+                               age,
+                               period,
+                               first_age,
+                               first_period,
+                               interval,
+                               first_age_isoline = NULL,
+                               first_period_isoline = NULL,
+                               isoline_interval = NULL,
+                               color_scale = NULL,
+                               color_map = NULL,
+                               line_width = .5,
+                               line_color = "grey",
+                               label_size = .5,
+                               label_color = "black",
+                               scale_units = "Quintile",
+                               wrap_cohort_labels = TRUE,
+                               quantile = NULL){
   data <- model$int_matrix
   data.raw <- as.data.frame(model$model$model)
   data.raw[,age] <- data.raw$acc
@@ -37,7 +37,7 @@ apci.plot.hexagram <- function(model, #matrix: age as rows, period as columns fi
   nncol <- ncol(data)
 
   if(!is.null(quantile)){
-  data <- cut(data,quantile(data,probs = seq(0,1,quantile)),
+    data <- cut(data,quantile(data,probs = seq(0,1,quantile)),
                 include.lowest = T,
                 labels = quantile(data,
                                   probs = seq(0,1,quantile))[-1])
@@ -48,21 +48,21 @@ apci.plot.hexagram <- function(model, #matrix: age as rows, period as columns fi
   # setting default values for missing parameters
   if(is.null(first_age_isoline)){
     first_age_isoline = first_age
-    }
+  }
   if(is.null(first_period_isoline)){
     first_period_isoline = first_period
-    }
+  }
   if(is.null(isoline_interval)){
     isoline_interval = 2 * interval }
   if(is.null(color_scale)){ #if color scale is missing use the min and max of data
     color_scale[1] <- min(data)
     color_scale[2] <- max(data)
-    }
+  }
   if(is.null(color_map)){
     # define jet colormap
     jet.colors <- colorRampPalette(c("black", "#00007F", "blue", "#007FFF", "cyan", "#7FFF7F", "yellow", "#FF7F00", "red",
-                                     "#7F0000"))
-    color_map = jet.colors(100)
+                                            "#7F0000"))
+                                            color_map = jet.colors(100)
   }else{
     jet.colors <- colorRampPalette(c(color_map[1],color_map[2]))(100)
     color_map = jet.colors
@@ -156,82 +156,82 @@ apci.plot.hexagram <- function(model, #matrix: age as rows, period as columns fi
             lwd = 1)
   }
 
-       #age-isolines
-       y1 <- compute_ycoordinate(first_period,age_isolines)
-       y2 <- compute_ycoordinate(last_period+ interval,age_isolines)
-       x1 <- compute_xcoordinate(first_period)
-       x2 <- compute_xcoordinate(last_period + interval)
+  #age-isolines
+  y1 <- compute_ycoordinate(first_period,age_isolines)
+  y2 <- compute_ycoordinate(last_period+ interval,age_isolines)
+  x1 <- compute_xcoordinate(first_period)
+  x2 <- compute_xcoordinate(last_period + interval)
 
-       for (i in 1:n_age_isolines){
-         lines(x=c(x1,x2), y=c(y1[i],y2[i]), col = line_color, lwd = line_width)
-         text(x=x2, y=y2[i], labels = paste("A:",age_isolines[i]),
-          col = label_color, cex = label_size, srt = -30,
-          adj = c(0, 0.5))
-       }
-
-       # period-isolines
-       x <- compute_xcoordinate(period_isolines)
-       y1 <- compute_ycoordinate(period_isolines, first_age)
-       y2 <- compute_ycoordinate(period_isolines, last_age+interval)
-       for (i in 1:n_period_isolines){
-         lines(x=c(x[i], x[i]), y=c(y1[i],y2[i]), col = line_color, lwd = line_width)
-         text(x=x[i], y=y2[i], labels = paste("P:",period_isolines[i]),
-       col = label_color, cex = label_size, srt = 90, adj = c(0, .5)) #pos = 4)
-       }
-
-         # cohort-isolines (need some more processing!)
-         # determine the periods where the cohort isolines cross the last age
-         p_top <- cohort_isolines + last_age
-         p_top <- p_top[p_top < last_period]
-         n_top <- length(p_top)
-         # and the periods where they cross the first age
-         p_bottom <- cohort_isolines + first_age
-         p_bottom <- p_bottom[p_bottom > first_period]
-         n_bottom <- length(p_bottom)
-         # and the ages where they cross the first period
-         a_left <- first_period - cohort_isolines
-         if (wrap_cohort_labels){
-           a_left <- a_left[a_left >= first_age]
-           }
-         n_left <- length(a_left)
-         # and the ages where they cross the last period
-         a_right <- last_period - cohort_isolines
-         a_right <- a_right[a_right <= last_age]
-         n_right <- length(a_right)
-         # combine the periods and ages initial and final points on the a*p coordinates
-         # first the left-bottom edge
-         if (wrap_cohort_labels){
-         p1 <- c(rep(first_period, n_left), p_bottom)
-         a1 <- c(a_left, rep(first_age, n_bottom))
-} else {
-  p1 <- c(rep(first_period, n_left))
-  a1 <- c(a_left)
+  for (i in 1:n_age_isolines){
+    lines(x=c(x1,x2), y=c(y1[i],y2[i]), col = line_color, lwd = line_width)
+    text(x=x2, y=y2[i], labels = paste("A:",age_isolines[i]),
+         col = label_color, cex = label_size, srt = -30,
+         adj = c(0, 0.5))
   }
-# then the top-right edge
-p2 <- c(p_top, rep(last_period, n_right))
-a2 <- c(rep(last_age, n_top), a_right)
 
-# convert the a*p coordinates to x-y coordinates
-x1 <- compute_xcoordinate(p1-interval) #,a1-1)
-x2 <- compute_xcoordinate(p2) #,a2)
-y1 <- compute_ycoordinate(p1-interval, a1-interval)
-y2 <- compute_ycoordinate(p2, a2)
-# finally draw the lines.
-for (i in 1:n_cohort_isolines){
-  lines(x=c(x1[i], x2[i]),
-        y=c(y1[i],y2[i]),
-        col = line_color, lwd = line_width)
-  text(x=x1[i], y=y1[i], labels = paste("C:",cohort_isolines[i]+n_age_isolines),
-       col = label_color, cex = label_size, srt = 30,
-       adj = c(1,0.5))
-}
+  # period-isolines
+  x <- compute_xcoordinate(period_isolines)
+  y1 <- compute_ycoordinate(period_isolines, first_age)
+  y2 <- compute_ycoordinate(period_isolines, last_age+interval)
+  for (i in 1:n_period_isolines){
+    lines(x=c(x[i], x[i]), y=c(y1[i],y2[i]), col = line_color, lwd = line_width)
+    text(x=x[i], y=y2[i], labels = paste("P:",period_isolines[i]),
+         col = label_color, cex = label_size, srt = 90, adj = c(0, .5)) #pos = 4)
+  }
 
-# create the colorbar
-par(las=2)
-par(mar=c(10,2,10,2.5))
-cb_range <- seq(from = color_scale[1], to = color_scale[2], length.out = ncol)
-image(y=cb_range,z=t(cb_range), col=color_map, axes=FALSE, main=scale_units, cex.main=.8)
-axis(4,cex.axis=label_size,mgp=c(0,.5,0))
+  # cohort-isolines (need some more processing!)
+  # determine the periods where the cohort isolines cross the last age
+  p_top <- cohort_isolines + last_age
+  p_top <- p_top[p_top < last_period]
+  n_top <- length(p_top)
+  # and the periods where they cross the first age
+  p_bottom <- cohort_isolines + first_age
+  p_bottom <- p_bottom[p_bottom > first_period]
+  n_bottom <- length(p_bottom)
+  # and the ages where they cross the first period
+  a_left <- first_period - cohort_isolines
+  if (wrap_cohort_labels){
+    a_left <- a_left[a_left >= first_age]
+  }
+  n_left <- length(a_left)
+  # and the ages where they cross the last period
+  a_right <- last_period - cohort_isolines
+  a_right <- a_right[a_right <= last_age]
+  n_right <- length(a_right)
+  # combine the periods and ages initial and final points on the a*p coordinates
+  # first the left-bottom edge
+  if (wrap_cohort_labels){
+    p1 <- c(rep(first_period, n_left), p_bottom)
+    a1 <- c(a_left, rep(first_age, n_bottom))
+  } else {
+    p1 <- c(rep(first_period, n_left))
+    a1 <- c(a_left)
+  }
+  # then the top-right edge
+  p2 <- c(p_top, rep(last_period, n_right))
+  a2 <- c(rep(last_age, n_top), a_right)
+
+  # convert the a*p coordinates to x-y coordinates
+  x1 <- compute_xcoordinate(p1-interval) #,a1-1)
+  x2 <- compute_xcoordinate(p2) #,a2)
+  y1 <- compute_ycoordinate(p1-interval, a1-interval)
+  y2 <- compute_ycoordinate(p2, a2)
+  # finally draw the lines.
+  for (i in 1:n_cohort_isolines){
+    lines(x=c(x1[i], x2[i]),
+          y=c(y1[i],y2[i]),
+          col = line_color, lwd = line_width)
+    text(x=x1[i], y=y1[i], labels = paste("C:",cohort_isolines[i]+n_age_isolines),
+         col = label_color, cex = label_size, srt = 30,
+         adj = c(1,0.5))
+  }
+
+  # create the colorbar
+  par(las=2)
+  par(mar=c(10,2,10,2.5))
+  cb_range <- seq(from = color_scale[1], to = color_scale[2], length.out = ncol)
+  image(y=cb_range,z=t(cb_range), col=color_map, axes=FALSE, main=scale_units, cex.main=.8)
+  axis(4,cex.axis=label_size,mgp=c(0,.5,0))
 }
 
 compute_xcoordinate <- function(p) { x <- p * sqrt(3) / 2
@@ -365,7 +365,9 @@ apci.plot.raw <- function(data,
   data$age <- data[,age]%>%as.factor
   data$period <- data[,period]%>%as.factor
 
-  g1 <- ggplot2::ggplot(data,
+  g1 <- ggplot2::ggplot(data%>%
+                dplyr::group_by(age,period) %>%
+                dplyr::summarize(outcome_var = mean(outcome_var,na.rm=TRUE),.groups='drop'),
                ggplot2::aes(x=period,group=age,
                             y = outcome_var,col=age))+
     ggplot2::geom_point()+
@@ -381,7 +383,9 @@ apci.plot.raw <- function(data,
                                      group=NA,y=outcome_var,col=NA),
               size = 3,shape=8,color="black")
 
- g2 <- ggplot2::ggplot(data,
+ g2 <- ggplot2::ggplot(data%>%
+                         dplyr::group_by(age,period) %>%
+                         dplyr::summarize(outcome_var = mean(outcome_var,na.rm=TRUE),.groups='drop'),
                        ggplot2::aes(x=age,group=period,y = outcome_var,col=period))+
    ggplot2::geom_point()+
    ggplot2::geom_path()+
