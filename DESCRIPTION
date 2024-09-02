@@ -1,7 +1,7 @@
 Package: APCI
 Type: Package
 Title: A New Age-Period-Cohort Model for Describing and Investigating Inter-Cohort Differences and Life Course Dynamics
-Version: 1.0.6
+Version: 1.0.8
 Authors@R: c(person("Jiahui", "Xu",email = "jpx5053@psu.edu", role = c("aut", "cre")),
               person("Liying",  "Luo", email = "liyingluo@psu.edu", role = "aut") )
 Maintainer: Jiahui Xu <jpx5053@psu.edu>
