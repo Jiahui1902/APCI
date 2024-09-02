@@ -328,7 +328,7 @@ run <- lapply((1:nrow(model$cohort_average))[model$cohort_average$sig!="   "],
     ggplot2::geom_abline(intercept = intercept,
                          slope = 1,color = "green",linetype='dotted')
          }else{
-           if((model$cohort_average[i,"cohort_average"]%>%as.character%>%as.numeric)>0){
+           if((model$cohort_slope[i,"cohort_slope"]%>%as.character%>%as.numeric)>0){
          intercept <- model$cohort_average$cohort_index[i]
   g<<-g+
     ggplot2::geom_abline(intercept = intercept,
@@ -344,7 +344,7 @@ run <- lapply((1:nrow(model$cohort_average))[model$cohort_average$sig!="   "],
   })
 g+
   ggplot2::labs(caption = "Line:\n average cohort effect is significantly different from the main effect
-       Intra-cohort change:\n solid positive; dashed: negative; dotted: no change")
+       Intra-cohort change:\n solid: positive; dashed: negative; dotted: no change")
 }
 
 # model <- APC_I
